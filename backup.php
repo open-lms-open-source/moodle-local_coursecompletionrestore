@@ -33,6 +33,7 @@ $title = get_string('resetmycourse', 'local_coursecompletionrestore');
 $PAGE->set_url('/local/coursecompletionrestore/index.php');
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context($context);
+$PAGE->requires->css('/local/coursecompletionrestore/assets/css/style.css');
 
 $PAGE->navbar->add($title);
 $PAGE->set_title($title);

@@ -19,3 +19,43 @@
 .snapshots-list th{
     background: #D3D3D3;
 }
+
+.snapshot-menu-bar {
+    border-left: 1px solid #DBE1E5;
+    border-right: 1px solid #DBE1E5;
+    border-top: 1px solid #DBE1E5;
+    background-color: #fff;
+    height: auto;
+    border-bottom: 1px solid #dbe1e5;
+}
+
+.snapshot-menu-bar a {
+    color: #56656F;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+}
+
+.snapshot-menu-bar a:hover:not(.active) {
+    color: #1693EB;
+    text-decoration: none;
+    background-image: linear-gradient(0deg, rgba(17, 157, 255, 0.08) 0%, rgba(0, 131, 222, 0.09) 100%);
+    border-bottom: 3px solid #edf8ff;
+}
+
+.snapshot-menu-bar-item {
+    display: inline-block;
+    padding: 17px 15px 12px;
+}
+
+.snapshot-menu-bar-item.active {
+    color: #1693EB;
+    background-image: linear-gradient(0deg, rgba(17, 157, 255, 0.08) 0%, rgba(0, 131, 222, 0.09) 100%);
+    border-bottom: 4px solid #1693EB;
+    font-family: Avenir Next Bold, Helvetica Neue, Arial, sans-serif;
+}
+
+.snapshot-menu-bar-item.active:hover {
+    background-color: #86bae8;
+}
