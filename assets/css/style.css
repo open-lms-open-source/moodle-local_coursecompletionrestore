@@ -1,0 +1,21 @@
+.snapshots-list{
+    margin: 10px;
+}
+
+.snapshots-list table{
+    margin: 5px;
+    border-collapse: collapse;
+    border-right: 1px solid #7C8791;
+    border-left: 1px solid #7C8791;
+    border-radius: 10px;
+}
+
+.snapshots-list tr, th, td{
+    border-top: 1px solid #7C8791;
+    border-bottom: 1px solid #7C8791;
+    padding: 5px;
+}
+
+.snapshots-list th{
+    background: #D3D3D3;
+}

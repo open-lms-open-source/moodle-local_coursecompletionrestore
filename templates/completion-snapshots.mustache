@@ -1,0 +1,57 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_coursecompletionrestore/completion-snapshots
+
+    This template renders the main content area for the dashboard block.
+
+    Example context (json):
+    {}
+}}
+<div class="snapshots-list">
+    <h2>{{snapshots.title}}</h2>
+    <table class="lists">
+    <thead>
+        <tr>
+            <th>{{#str}}course, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}notes, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}timecreated, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}firstuse, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}lastuse, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}uses, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}completions, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}actions, local_coursecompletionrestore{{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#snapshots.array}}
+            <tr>
+                <td>{{course}}</td>
+                <td>{{notes}}</td>
+                <td>{{datecreated}}</td>
+                <td>{{firstuse}}</td>
+                <td>{{lastuse}}</td>
+                <td>{{uses}}</td>
+                <td>{{completions}}</td>
+                <td>
+                    <a href = "restore.php?id={{id}}&action=confirm">Restore</a>
+                </td>
+            </tr>
+        {{/snapshots.array}}
+    </tbody>
+    </table>
+</div>

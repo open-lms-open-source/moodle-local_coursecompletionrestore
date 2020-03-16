@@ -1,3 +1,4 @@
-# Course Completion Snapshot
+Course Completion Backup and Restore
+===================
 
-This plugin is used to backup and restore completions in order to change course completion criteria.
+This plugin provides backup and restore features for course completion unlocking.

@@ -1,0 +1,79 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_coursecompletionrestore/restore-results
+
+    This template renders the main content area for the dashboard block.
+
+    Example context (json):
+    {}
+}}
+<div id="snapshots-details">
+    <h2>{{title}}</h2>
+    <table class="results">
+    <div id="row">
+        <tr>
+            <td>{{# str }} snapshot, local_coursecompletionrestore {{/ str }}:</td><td>{{snapshot}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} course, local_coursecompletionrestore {{/ str }}:</td><td>{{course}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} completions_restored, local_coursecompletionrestore {{/ str }}:</td><td>{{success_completions}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} criteria_restored, local_coursecompletionrestore {{/ str }}:</td><td>{{success_criteria}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}: </td><td>{{failed_completions}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}: </td><td>{{failed_criteria}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{completions_array}}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}</td>
+        </tr>
+    </div>
+    <div id="row">
+        <tr>
+            <td></td><td>{{criteria_array}}</td>
+        </tr>
+    </div>
+    </table>
+</div>

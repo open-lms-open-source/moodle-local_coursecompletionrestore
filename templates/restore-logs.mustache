@@ -1,0 +1,55 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_coursecompletionrestore/restore-logs
+
+    This template renders the main content area for the dashboard block.
+
+    Example context (json):
+    {}
+}}
+<div id="snapshots-list">
+    <h2>{{title}}</h2>
+    <table class="lists">
+    <thead>
+        <tr>
+            <th>{{# str }} snapshot, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} course, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} restored_by, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} date, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} completions_restored, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} criteria_restored, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#logs}}
+            <tr>
+                <td>{{snapshotid}}</td>
+                <td>{{coursename}}</td>
+                <td>{{username}}</td>
+                <td>{{timecreated}}</td>
+                <td>{{restoredcompletions}}</td>
+                <td>{{restoredcriterion}}</td>
+                <td>{{failedcompletions}}</td>
+                <td>{{failedcriterion}}</td>
+            </tr>
+        {{/logs}}
+    </tbody>
+    </table>
+</div>
