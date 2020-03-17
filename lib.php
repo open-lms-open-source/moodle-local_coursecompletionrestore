@@ -105,6 +105,7 @@ function save_snapshot($data = null) {
         // Update existing record.
     } else {
         // Create a new entry in the snapshots table.
+        $fullpassword = md5(uniqid(rand(), true));
         $info = new stdClass();
         $info->userid = $USER->id;
         $info->course = $data->course;
@@ -113,7 +114,7 @@ function save_snapshot($data = null) {
         $info->timecreated = time();
         $info->firstrestoredate = null;
         $info->recentrestoredate = null;
-        $info->password = md5(uniqid(rand(), true));
+        $info->password = substr($fullpassword,0,10);
         $snaphot = $DB->insert_record('local_ccr_snapshots', $info);
         if($snaphot) {
             // Get all the current users to snapshot completions.
