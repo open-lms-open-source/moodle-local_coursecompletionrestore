@@ -24,8 +24,8 @@
 }}
 <div class="snapshots-list">
     <h2>{{title}}</h2>
-    <table class="lists">
-    <thead>
+    <table class="table table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>{{# str }} snapshot, local_coursecompletionrestore {{/ str }}</th>
             <th>{{# str }} course, local_coursecompletionrestore {{/ str }}</th>
@@ -33,8 +33,10 @@
             <th>{{# str }} date, local_coursecompletionrestore {{/ str }}</th>
             <th>{{# str }} completions_restored, local_coursecompletionrestore {{/ str }}</th>
             <th>{{# str }} criteria_restored, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} modules_restored, local_coursecompletionrestore {{/ str }}</th>
             <th>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}</th>
             <th>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}</th>
+            <th>{{# str }} failed_modules, local_coursecompletionrestore {{/ str }}</th>
         </tr>
     </thead>
     <tbody>
@@ -46,8 +48,10 @@
                 <td>{{timecreated}}</td>
                 <td>{{restoredcompletions}}</td>
                 <td>{{restoredcriterion}}</td>
+                <td>{{restoredmodules}}</td>
                 <td>{{failedcompletions}}</td>
                 <td>{{failedcriterion}}</td>
+                <td>{{failedmodules}}</td>
             </tr>
         {{/logs}}
     </tbody>

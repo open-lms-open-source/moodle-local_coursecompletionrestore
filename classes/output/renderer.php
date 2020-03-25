@@ -120,11 +120,15 @@ class renderer extends plugin_renderer_base{
         $failures = $restore->failedjson;
         $failedcompletions = null;
         $failedcriteria = null;
+        $failedmodules = null;
         if(isset($failures['completions'])){
             $failedcompletions = json_decode($failures['completions']);
         }
         if(isset($failures['criteria'])) {
             $failedcriteria = json_decode($failures['criteria']);
+        }
+        if(isset($failures['modules'])) {
+            $failedcriteria = json_decode($failures['modules']);
         }
         $context = array(
             'title' => get_string('restore_details', 'local_coursecompletionrestore'),
@@ -132,10 +136,13 @@ class renderer extends plugin_renderer_base{
             'course' => $course->fullname,
             'success_completions' => $restore->restoredcompletions,
             'success_criteria' => $restore->restoredcriterion,
+            'success_modules' => $restore->restoredmodules,
             'failed_completions' => $restore->failedcompletions,
             'failed_criteria' => $restore->failedcriterion,
+            'failed_modules' => $restore->failedmodules,
             'completions_array' => $failedcompletions,
-            'criteria_array' => $failedcriteria
+            'criteria_array' => $failedcriteria,
+            'modules_array' => $failedmodules
         );
         return $this->render_from_template('local_coursecompletionrestore/restore-results', $context);
     }
@@ -156,7 +163,7 @@ class renderer extends plugin_renderer_base{
         $context = array(
             'pageurl' => $CFG->wwwroot . '/local/coursecompletionrestore/restore.php',
             'formhtml' => $form,
-            'title' => get_string('backup', 'local_coursecompletionrestore')
+            'title' => get_string('restore', 'local_coursecompletionrestore')
         );
         return $this->render_from_template('local_coursecompletionrestore/backup-page', $context);
 

@@ -36,7 +36,7 @@ $action = optional_param('action' , 'logs', PARAM_TEXT);
 
 $context = context_system::instance();
 
-$title = get_string('restore', 'local_coursecompletionrestore');
+$title = get_string('resetmycourse', 'local_coursecompletionrestore');
 $params = array('id'=>$snapshotid, 'action'=>$action);
 $PAGE->set_url('/local/coursecompletionrestore/restore.php', $params);
 $PAGE->set_pagelayout('standard');

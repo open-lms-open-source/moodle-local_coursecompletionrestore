@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,17 +16,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This plugin provides the ability to backup and restore course completions after unlocking.
+ * Defines message providers (types of messages being sent)
  *
- *
- * @package    local_coursecompletionrestore
- * @copyright  2020 eCreators
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @website    None
+ * @package local_coursecompletionrestore
+ * @copyright 2020 Lupiya Mujala <lupiya@ecreators.com.au>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version  = 2020032501;
-$plugin->requires = 2017111300;
-$plugin->release = '1.0';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->component = 'local_coursecompletionrestore';
+$messageproviders = array (
+
+    // reminder email for unrestored snapshots.
+    'snapshot_resore_reminder' => array (
+    )
+);
+
+
+

@@ -37,6 +37,24 @@
                 <KEY NAME="snapshotid" TYPE="foreign" FIELDS="id" REFTABLE="local_ccr_snapshots" REFFIELDS="id"/>
             </KEYS>
         </TABLE>
+
+        <TABLE NAME="local_ccr_crsmod_compl" COMMENT="This backs up the course module completion">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="coursemoduleid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="completionstate" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="viewed" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="overrideby" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="snapshotid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="snapshotid" TYPE="foreign" FIELDS="id" REFTABLE="local_ccr_snapshots" REFFIELDS="id"/>
+            </KEYS>
+        </TABLE>
+
         <TABLE NAME="local_ccr_crit_compl" COMMENT="Course completion criteria user records">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
@@ -60,6 +78,7 @@
                 <INDEX NAME="useridcoursecriteriaid" UNIQUE="true" FIELDS="userid, course, criteriaid"/>
             </INDEXES>
         </TABLE>
+
         <TABLE NAME="local_ccr_logs" COMMENT="This logs all the snapshots restored">
             <FIELDS>
                 <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
@@ -68,8 +87,10 @@
                 <FIELD NAME="snapshotid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="restoredcompletions" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="restoredcriterion" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="restoredmodules" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="failedcompletions" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="failedcriterion" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="failedmodules" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="failedjson" TYPE="char" LENGTH="500" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
             </FIELDS>
@@ -80,6 +101,20 @@
             <INDEXES>
                 <INDEX NAME="restorelog" UNIQUE="true" FIELDS="userid, id, snapshotid"/>
             </INDEXES>
+        </TABLE>
+
+        <TABLE NAME="local_ccr_email_reminders" COMMENT="This logs all the email reminders sent">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="snapshotid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="content" TYPE="char" LENGTH="500" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="snapshotid" TYPE="foreign" FIELDS="id" REFTABLE="local_ccr_snapshots" REFFIELDS="id"/>
+            </KEYS>
         </TABLE>
     </TABLES>
 </XMLDB>

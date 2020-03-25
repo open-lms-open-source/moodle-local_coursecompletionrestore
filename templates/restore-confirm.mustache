@@ -24,28 +24,36 @@
 }}
 <div class="snapshots-list">
     <h2>{{title}}</h2>
-    <div class="details-block">
-        {{#snapshot}}
-            <div id="row">
-                <label class="col-lg-2 control-label">{{# str }} course, local_coursecompletionrestore {{/ str }}:</label>
-                {{course}}
-            </div>
-            <div id="row">
-                <label class="col-lg-2 control-label">{{# str }} notes, local_coursecompletionrestore {{/ str }}:</label>
-                {{notes}}
-            </div>
-            <div id="row">
-                <label class="col-lg-2 control-label">{{# str }} timecreated, local_coursecompletionrestore {{/ str }}:</label>
-                {{datecreated}}
-            </div>
-            <div id="row">
-                <label class="col-lg-2 control-label">{{# str }} completions, local_coursecompletionrestore {{/ str }}:</label>
-                {{completions}}
-            </div>
-        {{/snapshot}}
-    </div>
-    <div id="row">
-        <a href="{{confirm_link}}" class = "ecommerce-menu-bar-item">{{# str }} confirm, local_coursecompletionrestore {{/ str }}</a>
-        <a href="{{cancel_link}}" class = "ecommerce-menu-bar-item">{{# str }} cancel, local_coursecompletionrestore {{/ str }}</a>
+
+    <div class="card bg-light mb-3 custom-card">
+        <div class="card-header">Confirm</div>
+        <div class="card-body">
+            <table>
+                {{#snapshot}}
+                    <tr>
+                        <th>{{# str }} course, local_coursecompletionrestore {{/ str }}:</th>
+                        <td>{{course}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{# str }} notes, local_coursecompletionrestore {{/ str }}:</th>
+                        <td>{{notes}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{# str }} timecreated, local_coursecompletionrestore {{/ str }}:</th>
+                        <td>{{datecreated}}</td>
+                    </tr>
+                    <tr>
+                        <th>{{# str }} completions, local_coursecompletionrestore {{/ str }}:</th>
+                        <td>{{completions}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centered_cell">
+                            <a href="{{confirm_link}}" class = "ecommerce-menu-bar-item"><button type="button" class="btn btn-primary">{{# str }} confirm, local_coursecompletionrestore {{/ str }}</button></a>
+                            <a href="{{cancel_link}}" class = "ecommerce-menu-bar-item"><button type="button" class="btn btn-primary">{{# str }} cancel, local_coursecompletionrestore {{/ str }}</button></a>
+                        </td>
+                    </tr>
+                {{/snapshot}}
+            </table>
+        </div>
     </div>
 </div>

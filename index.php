@@ -31,7 +31,7 @@ require_login();
 
 $context = context_system::instance();
 
-$title = get_string('snapshot', 'local_coursecompletionrestore');
+$title = get_string('resetmycourse', 'local_coursecompletionrestore');
 $PAGE->set_url('/local/coursecompletionrestore/index.php');
 $PAGE->set_pagelayout('standard');
 $PAGE->set_context($context);

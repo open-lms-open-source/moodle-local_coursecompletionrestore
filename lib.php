@@ -143,6 +143,20 @@ function save_snapshot($data = null) {
                 $module_completion->snapshotid = $snaphot;
                 $DB->insert_record('local_ccr_crit_compl', $module_completion);
             }
+            // Get all the current course module completions.
+            $module_completions = $DB->get_records_sql('SELECT cmc.* FROM {course_modules_completion} cmc JOIN {course_modules} cm ON cm.id = cmc.coursemoduleid
+                                  WHERE cm.course = ? ', array($data->course));
+            foreach ($module_completions as $completion) {
+                $module_completion = new stdClass();
+                $module_completion->userid = $completion->userid;
+                $module_completion->coursemoduleid = $completion->coursemoduleid;
+                $module_completion->completionstate = $completion->completionstate;
+                $module_completion->viewed = $completion->viewed;
+                $module_completion->overrideby = $completion->overrideby;
+                $module_completion->timemodified = $completion->timemodified;
+                $module_completion->snapshotid = $snaphot;
+                $DB->insert_record('local_ccr_crsmod_compl', $module_completion);
+            }
         }
     }
 
@@ -155,11 +169,14 @@ function restore_snapshot($id){
     // First lets get the completions for this snapshot.
     $completions = $DB->get_records('local_ccr_crs_completions', array('snapshotid' => $id));
     $crit_completions = $DB->get_records('local_ccr_crit_compl', array('snapshotid' => $id));
+    $module_completions = $DB->get_records('local_ccr_crsmod_compl', array('snapshotid' => $id));
 
     $total_completions = 0;
     $total_criteria = 0;
+    $total_mod_completion = 0;
     $failedcompletions = array();
     $failedcriterion = array();
+    $failedmodules = array();
     // Restore the completions.
     foreach ($completions as $completion){
         // Check first if the completion record already exists first.
@@ -221,17 +238,51 @@ function restore_snapshot($id){
         }
     }
 
+    foreach ($module_completions as $completion) {
+        // Check first if the module completion already exists.
+        $existing_completion = $DB->get_record('course_modules_completion', array('coursemoduleid' => $completion->coursemoduleid, 'userid' => $completion->userid));
+        if( $existing_completion ){
+            $existing_completion->coursemoduleid = $completion->coursemoduleid;
+            $existing_completion->userid = $completion->userid;
+            $existing_completion->completionstate = $completion->completionstate;
+            $existing_completion->viewed = $completion->viewed;
+            $existing_completion->overrideby = $completion->overrideby;
+            $existing_completion->timemodified = $completion->timemodified;
+            if( $DB->update_record('course_modules_completion', $existing_completion) ){
+                $total_mod_completion++;
+            }else{
+                $failedmodules[] = $completion;
+            }
+        } else {
+            $module_completion = new stdClass();
+            $module_completion->userid = $completion->userid;
+            $module_completion->coursemoduleid = $completion->coursemoduleid;
+            $module_completion->completionstate = $completion->completionstate;
+            $module_completion->viewed = $completion->viewed;
+            $module_completion->overrideby = $completion->overrideby;
+            $module_completion->timemodified = $completion->timemodified;
+            if( $DB->insert_record('course_modules_completion', $module_completion) ){
+                $total_mod_completion++;
+            }else{
+                $failedmodules[] = $completion;
+            }
+        }
+    }
+
     $snapshot = $DB->get_record('local_ccr_snapshots', array('id' => $id));
     $failedjson['completions'] = json_encode($failedcompletions);
     $failedjson['criteria'] = json_encode($failedcriterion);
+    $failedjson['modules'] = json_encode($failedmodules);
     $log = new stdClass();
     $log->userid = $USER->id;
     $log->course = $snapshot->course;
     $log->snapshotid = $id;
     $log->restoredcompletions = $total_completions;
     $log->restoredcriterion = $total_criteria;
+    $log->restoredmodules = $total_mod_completion;
     $log->failedcompletions = count($completions) - $total_completions;
     $log->failedcriterion = count($crit_completions) - $total_criteria;
+    $log->failedmodules = count($module_completions) - $total_mod_completion;
     $log->failedjson = $failedjson;
 
     $log->timecreated = time();
@@ -262,7 +313,7 @@ function get_restore_logs(){
 
     foreach ($logs as $log){
         $final_logs[] = array('id' => $log->id, 'coursename' => $log->coursename, 'username' => $log->username, 'timecreated' => $log->timecreated, 'restoredcompletions' => $log->restoredcompletions, 'restoredcriterion' => $log->restoredcriterion,
-                                'failedcompletions' => $log->failedcompletions, 'failedcriterion' => $log->failedcriterion, 'snapshotid' => $log->snapshotid);
+                                'restoredmodules' => $log->restoredmodules ,'failedcompletions' => $log->failedcompletions, 'failedcriterion' => $log->failedcriterion, 'failedmodules' => $log->failedmodules, 'snapshotid' => $log->snapshotid);
     }
 
     return $final_logs;

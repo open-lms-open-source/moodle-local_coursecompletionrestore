@@ -5,21 +5,11 @@
 .snapshots-list table{
     margin: 5px;
     border-collapse: collapse;
-    border-right: 1px solid #7C8791;
-    border-left: 1px solid #7C8791;
-    border-radius: 10px;
 }
-
-.snapshots-list tr, th, td{
-    border-top: 1px solid #7C8791;
-    border-bottom: 1px solid #7C8791;
-    padding: 5px;
+thead.thead-dark{
+    background-color: #0A246A;
+    color: #ffffff;
 }
-
-.snapshots-list th{
-    background: #D3D3D3;
-}
-
 .snapshot-menu-bar {
     border-left: 1px solid #DBE1E5;
     border-right: 1px solid #DBE1E5;
@@ -58,4 +48,31 @@
 
 .snapshot-menu-bar-item.active:hover {
     background-color: #86bae8;
+}
+
+.custom-card{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.custom-card table{
+    margin: 0 auto;
+    width: 100%;
+    padding: 5px;
+}
+
+.custom-card tr{
+    line-height: 40px;
+}
+
+.custom-card th{
+    text-align: left;
+}
+
+.custom-card tr:nth-child(odd){
+    background-color: #ffffff;
+}
+
+.custom-card tr:nth-child(even){
+    background-color: #F0F0F0;
 }
