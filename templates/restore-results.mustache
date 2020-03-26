@@ -24,51 +24,45 @@
 }}
 <div id="snapshots-details">
     <h2>{{title}}</h2>
-
-    <div class="card bg-light mb-3 custom-card">
-        <div class="card-header">Restore</div>
-        <div class="card-body">
-            <table>
-                <tr>
-                    <th>{{# str }} snapshot, local_coursecompletionrestore {{/ str }}:</th><td>{{snapshot}}</td>
-                </tr>
-                <tr>
-                    <th>{{# str }} course, local_coursecompletionrestore {{/ str }}:</th><td>{{course}}</td>
-                </tr>
-                <tr>
-                    <th>{{# str }} completions_restored, local_coursecompletionrestore {{/ str }}:</th><td>{{success_completions}}</td>
-                </tr>
-                <tr>
-                    <th>{{# str }} criteria_restored, local_coursecompletionrestore {{/ str }}:</th><td>{{success_criteria}}</td>
-                </tr>
-                 <tr>
-                     <th>{{# str }} modules_restored, local_coursecompletionrestore {{/ str }}:</th><td>{{success_modules}}</td>
-                 </tr>
-                <tr>
-                    <th>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}: </th><td>{{failed_completions}}</td>
-                </tr>
-                <tr>
-                    <th>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}: </th><td>{{failed_criteria}}</td>
-                </tr>
-                <tr>
-                    <th>{{# str }} failed_modules, local_coursecompletionrestore {{/ str }}</th><td>{{failed_modules}}</td>
-                </tr>
-                <tr>
-                    <td>{{completions_array}}</td>
-                </tr>
-                <tr>
-                    <th colspan="2">{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}</th>
-                </tr>
-                <tr>
-                    <td colspan="2">{{criteria_array}}</td>
-                </tr>
-                <tr>
-                    <th colspan="2">{{# str }} failed_modules, local_coursecompletionrestore {{/ str }}</th>
-                </tr>
-                <tr>
-                    <td colspan="2">{{modules_array}}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
+    <table class="results">
+        <tr>
+            <td>{{# str }} snapshot, local_coursecompletionrestore {{/ str }}:</td><td>{{snapshot}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} course, local_coursecompletionrestore {{/ str }}:</td><td>{{course}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} completions_restored, local_coursecompletionrestore {{/ str }}:</td><td>{{success_completions}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} criteria_restored, local_coursecompletionrestore {{/ str }}:</td><td>{{success_criteria}}</td>
+        </tr>
+         <tr>
+             <td>{{# str }} modules_restored, local_coursecompletionrestore {{/ str }}:</td><td>{{success_modules}}</td>
+         </tr>
+        <tr>
+            <td>{{# str }} failed_completions, local_coursecompletionrestore {{/ str }}: </td><td>{{failed_completions}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}: </td><td>{{failed_criteria}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} failed_modules, local_coursecompletionrestore {{/ str }}</td><td>{{failed_modules}}</td>
+        </tr>
+        <tr>
+            <td>{{completions_array}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} failed_criteria, local_coursecompletionrestore {{/ str }}</td>
+        </tr>
+        <tr>
+            <td></td><td>{{criteria_array}}</td>
+        </tr>
+        <tr>
+            <td>{{# str }} failed_modules, local_coursecompletionrestore {{/ str }}</td>
+        </tr>
+        <tr>
+            <td></td><td>{{modules_array}}</td>
+        </tr>
+    </table>
 </div>

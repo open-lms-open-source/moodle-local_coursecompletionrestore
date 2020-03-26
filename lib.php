@@ -313,7 +313,7 @@ function get_restore_logs(){
 
     foreach ($logs as $log){
         $final_logs[] = array('id' => $log->id, 'coursename' => $log->coursename, 'username' => $log->username, 'timecreated' => $log->timecreated, 'restoredcompletions' => $log->restoredcompletions, 'restoredcriterion' => $log->restoredcriterion,
-                                'restoredmodules' => $log->restoredmodules ,'failedcompletions' => $log->failedcompletions, 'failedcriterion' => $log->failedcriterion, 'failedmodules' => $log->failedmodules, 'snapshotid' => $log->snapshotid);
+                                'failedcompletions' => $log->failedcompletions, 'failedcriterion' => $log->failedcriterion, 'failedmodules' => $log->failedmodules, 'snapshotid' => $log->snapshotid);
     }
 
     return $final_logs;

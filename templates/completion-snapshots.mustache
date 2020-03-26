@@ -24,34 +24,34 @@
 }}
 <div class="snapshots-list">
     <h2>{{snapshots.title}}</h2>
-        <table class="table table-hover">
-        <thead class="thead-dark">
+    <table class="lists">
+    <thead>
+        <tr>
+            <th>{{#str}}course, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}notes, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}timecreated, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}firstuse, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}lastuse, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}uses, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}completions, local_coursecompletionrestore{{/str}}</th>
+            <th>{{#str}}actions, local_coursecompletionrestore{{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#snapshots.array}}
             <tr>
-                <th>{{#str}}course, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}notes, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}timecreated, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}firstuse, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}lastuse, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}uses, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}completions, local_coursecompletionrestore{{/str}}</th>
-                <th>{{#str}}actions, local_coursecompletionrestore{{/str}}</th>
+                <td>{{course}}</td>
+                <td>{{notes}}</td>
+                <td>{{datecreated}}</td>
+                <td>{{firstuse}}</td>
+                <td>{{lastuse}}</td>
+                <td>{{uses}}</td>
+                <td>{{completions}}</td>
+                <td>
+                    <a href = "restore.php?id={{id}}&action=confirm">Restore</a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            {{#snapshots.array}}
-                <tr>
-                    <td>{{course}}</td>
-                    <td>{{notes}}</td>
-                    <td>{{datecreated}}</td>
-                    <td>{{firstuse}}</td>
-                    <td>{{lastuse}}</td>
-                    <td>{{uses}}</td>
-                    <td>{{completions}}</td>
-                    <td>
-                        <a href = "restore.php?id={{id}}&action=confirm">Restore</a>
-                    </td>
-                </tr>
-            {{/snapshots.array}}
-        </tbody>
-        </table>
+        {{/snapshots.array}}
+    </tbody>
+    </table>
 </div>

@@ -79,7 +79,18 @@ class send_email_reminder extends \core\task\scheduled_task {
                     $a->snapshot = $snapshot->id;
                     $a->firstname = $userTo->firstname;
 
-                    $message = get_config('local_coursecompletionrestore','email_body', $a);
+                    $message = "";
+
+                    $config_message = get_config('local_coursecompletionrestore', 'email_body');
+
+                    if (!empty($config_message)) {
+                        foreach ($a as $name => $value) {
+                            $config_message = str_replace('{$a->' . $name .'}', $value, $config_message);
+                        }
+                        $message = nl2br($config_message);
+                    } else {
+                        $message = nl2br(get_string('snapshot_restore_email', 'local_coursecompletionrestore', $a));
+                    }
 
                     $plaintext = format_text_email($message, FORMAT_HTML);
 

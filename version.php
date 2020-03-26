@@ -24,7 +24,7 @@
  * @website    None
  */
 
-$plugin->version  = 2020032501;
+$plugin->version  = 2020032401;
 $plugin->requires = 2017111300;
 $plugin->release = '1.0';
 $plugin->maturity = MATURITY_STABLE;

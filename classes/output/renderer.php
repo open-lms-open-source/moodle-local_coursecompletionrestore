@@ -163,7 +163,7 @@ class renderer extends plugin_renderer_base{
         $context = array(
             'pageurl' => $CFG->wwwroot . '/local/coursecompletionrestore/restore.php',
             'formhtml' => $form,
-            'title' => get_string('restore', 'local_coursecompletionrestore')
+            'title' => get_string('backup', 'local_coursecompletionrestore')
         );
         return $this->render_from_template('local_coursecompletionrestore/backup-page', $context);
 

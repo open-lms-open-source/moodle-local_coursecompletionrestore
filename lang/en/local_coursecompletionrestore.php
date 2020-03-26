@@ -58,7 +58,6 @@ $string['restore_logs'] = 'Restore Logs';
 $string['confirm_restore'] = 'Confirm Restoration';
 $string['date'] = 'Date';
 $string['password_enrty'] = 'Please enter the password {$a->password}';
-//$string['password_enrty'] = 'Please enter any text to confirm you want to restore this snapshot';
 $string['firstuse'] = 'First Restore';
 $string['lastuse'] = 'Recent Restore';
 $string['send_email_reminder'] = 'Send Email Reminder';
@@ -68,5 +67,6 @@ $string['email_body_desc'] = 'This is the email body that will be sent in the re
 $string['email_timing'] = 'Email Sending Frequency';
 $string['email_timing_desc'] = 'This is the frequency the email will be sent in seconds';
 $string['snapshot_restore_email'] = 'Dear {$a->firstname}, 
+
                                     The snapshot with ID {$a->snapshot} has not yet been reapplied. Please ensure that this is applied once changes to the course are completed.';
 $string['snapshot_restore_email_subject'] = "Course Snapshot Not Re-Applied";
