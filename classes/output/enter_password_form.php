@@ -34,6 +34,7 @@ class enter_password_form extends moodleform{
 
         $mform->addElement('text', 'enter_password', get_string('password_enrty', 'local_coursecompletionrestore', $params));
         $mform->addRule('enter_password', $required, 'required', null, 'client');
+        $mform->addHelpButton('enter_password', 'password', 'local_coursecompletionrestore', 'password');
         $mform->setType('enter_password', PARAM_TEXT);
 
         $mform->addElement('hidden', 'id');

@@ -78,7 +78,7 @@ function get_course_completion_backups(){
 }
 
 function get_snaphot_details($id){
-    global $DB;
+    global $DB, $CFG;
 
     $snapshot =  $DB->get_record_sql("SELECT *, DATE_FORMAT(FROM_UNIXTIME(timecreated),'%d-%m-%Y') as timecreated FROM {local_ccr_snapshots} WHERE id =? ", array($id));
     $course = $DB->get_record('course', array('id' => $snapshot->course));
@@ -90,9 +90,14 @@ function get_snaphot_details($id){
         $final_completions[] = array('firstname' => $completion->firstname, 'lastname' => $completion->lastname, 'timecompleted' => $completion->timecompleted);
     }
 
+    $datecreated = new DateTime();
+    $datecreated->setTimestamp($snapshot->timecreated);
+    $datecreated->setTimeZone(new DateTimeZone($CFG->timezone));
+    $datecreatedstring = $datecreated->format('d/m/Y H:i:s');
+
     $backup = new stdClass();
     $backup->snapshot = array('id' => $snapshot->id, 'courseid' => $course->id, 'course' => $course->fullname, 'notes' => $snapshot->notes, 'password' => $snapshot->password,
-        'uses' => $snapshot->uses, 'datecreated' => $snapshot->timecreated, 'completions' => count($completions));
+        'uses' => $snapshot->uses, 'datecreated' => $datecreatedstring, 'completions' => count($completions));
     $backup->completions = $final_completions;
 
     return $backup;
@@ -299,6 +304,9 @@ function restore_snapshot($id){
         $snapshot->recentrestoredate = time();
     }
     $DB->update_record('local_ccr_snapshots', $snapshot);
+
+    // Purge caches to update records.
+    purge_all_caches();
 
     return $details;
 }

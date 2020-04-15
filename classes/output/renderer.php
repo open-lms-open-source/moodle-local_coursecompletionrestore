@@ -61,6 +61,7 @@ class renderer extends plugin_renderer_base{
 
         $context = array(
             'pageurl' => $CFG->wwwroot . '/local/coursecompletionrestore/index.php',
+            'backupurl' => $CFG->wwwroot . '/local/coursecompletionrestore/backup.php',
             'snapshots' => $renderable->export_for_template($this)
         );
         return $this->render_from_template('local_coursecompletionrestore/completion-snapshots', $context);
@@ -107,7 +108,7 @@ class renderer extends plugin_renderer_base{
             'title' => $object['title'],
             'completions' => $object['completions'],
             'confirm_link' => $CFG->wwwroot . '/local/coursecompletionrestore/actions.php?action=restore&snapshotid=' .$object['details']['id'],
-            'cancel_link' => $CFG->wwwroot . '/local/coursecompletionrestore/restore.php?action=view&id=' .$object['details']['id']
+            'cancel_link' => $CFG->wwwroot . '/local/coursecompletionrestore/index.php'
         );
         return $this->render_from_template('local_coursecompletionrestore/restore-confirm', $context);
     }

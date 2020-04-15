@@ -44,7 +44,7 @@
                 <FIELD NAME="coursemoduleid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="userid" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="completionstate" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
-                <FIELD NAME="viewed" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+                <FIELD NAME="viewed" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
                 <FIELD NAME="overrideby" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
                 <FIELD NAME="timemodified" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
                 <FIELD NAME="snapshotid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>

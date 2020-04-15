@@ -24,6 +24,9 @@
 }}
 <div class="snapshots-list">
     <h2>{{snapshots.title}}</h2>
+    <div id="row">
+        <a href="{{backupurl}}" class = "ecommerce-menu-bar-item"><button type="button" class="btn btn-default">{{# str }} backupcourse, local_coursecompletionrestore {{/ str }}</button></a>
+    </div>
     <table class="lists">
     <thead>
         <tr>
@@ -48,7 +51,7 @@
                 <td>{{uses}}</td>
                 <td>{{completions}}</td>
                 <td>
-                    <a href = "restore.php?id={{id}}&action=confirm">Restore</a>
+                    <a href = "restore.php?id={{id}}&action=confirm"><button type="button" class="btn btn-default">Restore</button></a>
                 </td>
             </tr>
         {{/snapshots.array}}
