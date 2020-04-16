@@ -75,7 +75,7 @@
                 <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
                 <INDEX NAME="criteriaid" UNIQUE="false" FIELDS="criteriaid"/>
                 <INDEX NAME="timecompleted" UNIQUE="false" FIELDS="timecompleted"/>
-                <INDEX NAME="useridcoursecriteriaid" UNIQUE="true" FIELDS="userid, course, criteriaid"/>
+                <INDEX NAME="useridcoursecriteriaid" UNIQUE="true" FIELDS="userid, course, criteriaid, snapshotid"/>
             </INDEXES>
         </TABLE>
 
